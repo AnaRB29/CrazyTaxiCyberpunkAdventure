@@ -57,6 +57,16 @@ public class Movement : MonoBehaviour
            {
                cabinRigidbody.velocity = relativeFwd * speed * maxSpeed;
            }
+           
+           if (Input.GetKeyUp("space"))
+           {
+               cabinRigidbody.velocity = relativeFwd * speed * maxSpeed / 2;
+           }
+
+           if (Input.GetKey("e"))
+           {
+               cabinRigidbody.velocity = Vector3.zero;
+           }
                      
     }
 }
