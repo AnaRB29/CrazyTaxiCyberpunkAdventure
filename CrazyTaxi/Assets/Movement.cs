@@ -67,6 +67,8 @@ public class Movement : MonoBehaviour
            {
                cabinRigidbody.velocity = Vector3.zero;
            }
+
+          
                      
     }
 }
