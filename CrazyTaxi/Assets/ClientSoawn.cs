@@ -10,7 +10,7 @@ public class ClientSoawn : MonoBehaviour
     public GameObject objective;
     private GameObject _newCliente;
     private GameObject _newObjective;
-    public GameObject player;
+    //public GameObject player;
     public List<Vector3> positions;
     public List<Vector3> objectives;
 
@@ -22,6 +22,7 @@ public class ClientSoawn : MonoBehaviour
 
     private void Update()
     {
+        /*
         if (Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5)
         {
             Debug.Log("FRENA");
@@ -43,7 +44,7 @@ public class ClientSoawn : MonoBehaviour
                 
 
             }
-        }
+        }*/
     }
 
 
