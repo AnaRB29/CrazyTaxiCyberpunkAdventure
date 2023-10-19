@@ -479,6 +479,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cliente: {fileID: 776052291464426707, guid: 73ade7c0da5a87b45b8d152518bca891, type: 3}
   objective: {fileID: 471078231652508280, guid: 302a5658e784160498618a3bef74d752, type: 3}
+  player: {fileID: 322051236}
+  rb: {fileID: 322051237}
   positions:
   - {x: -10, y: 0, z: 5}
   - {x: 2, y: 0, z: 12}

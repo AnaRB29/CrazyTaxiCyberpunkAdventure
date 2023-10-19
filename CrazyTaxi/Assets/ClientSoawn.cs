@@ -10,41 +10,43 @@ public class ClientSoawn : MonoBehaviour
     public GameObject objective;
     private GameObject _newCliente;
     private GameObject _newObjective;
-    //public GameObject player;
+    public GameObject player;
+    [SerializeField] private Rigidbody rb;
     public List<Vector3> positions;
     public List<Vector3> objectives;
+    
 
     private void Start()
     {
+        rb = player.GetComponent<Rigidbody>();
         SpawnClient();
         SpawnObjective();
     }
 
     private void Update()
     {
-        /*
-        if (Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5)
-        {
-            Debug.Log("FRENA");
-            
-            if (player.GetComponent<Rigidbody>().velocity == Vector3.zero)
-            {
-                Debug.Log("Objectivo alcanzado");
-                
-            }
-        }
-        
         if (Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 5)
         {
             Debug.Log("FRENA");
-            
-            if (player.GetComponent<Rigidbody>().velocity == Vector3.zero)
+
+            if (rb.velocity == Vector3.zero)
             {
-                _newCliente.transform.position = Vector3.MoveTowards(_newCliente.transform.position,player.transform.position,.01f);
-                
+                _newCliente.transform.position = Vector3.MoveTowards(_newCliente.transform.position, player.transform.position, .01f);
+            }
+
+        }
+
+        if (Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5)
+        {
+            Debug.Log("FRENA");
+
+            if (rb.velocity == Vector3.zero)
+            {
+                Debug.Log("Objectivo alcanzado");
 
             }
-        }*/
+        }
+
     }
 
 
