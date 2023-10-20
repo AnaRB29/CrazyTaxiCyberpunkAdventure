@@ -14,39 +14,34 @@ public class ClientSoawn : MonoBehaviour
     [SerializeField] private Rigidbody rb;
     public List<Vector3> positions;
     public List<Vector3> objectives;
+    public bool clienteObtenido = false;
     
 
     private void Start()
     {
         rb = player.GetComponent<Rigidbody>();
         SpawnClient();
-        SpawnObjective();
+        //SpawnObjective();
     }
 
     private void Update()
     {
-        if (Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 5)
+        if (clienteObtenido)
         {
-            Debug.Log("FRENA");
-
-            if (rb.velocity == Vector3.zero)
+            if (Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 1)
             {
-                _newCliente.transform.position = Vector3.MoveTowards(_newCliente.transform.position, player.transform.position, .01f);
-            }
-
+                Debug.Log("FRENA");
+            
+                _newCliente.transform.parent = player.transform;
+                if (_newCliente.transform.parent == player.transform)
+                {
+                    SpawnObjective();
+                    clienteObtenido = false;
+                }
+            } 
         }
-
-        if (Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5)
-        {
-            Debug.Log("FRENA");
-
-            if (rb.velocity == Vector3.zero)
-            {
-                Debug.Log("Objectivo alcanzado");
-
-            }
-        }
-
+        LeaveClient();
+        
     }
 
 
@@ -54,13 +49,27 @@ public class ClientSoawn : MonoBehaviour
     {
         int indexC = Random.Range(0, positions.Count);
         _newCliente = Instantiate(cliente, positions[indexC], Quaternion.identity);
-        
+        clienteObtenido = true;
     }
 
     private void SpawnObjective()
     {
         int indexO = Random.Range(0, objectives.Count);
         _newObjective = Instantiate(objective, positions[indexO], Quaternion.identity);
+      
+    }
+
+    private void LeaveClient()
+    {
+        if ((Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5))
+        {
+            Debug.Log("A");
+            _newCliente.transform.SetParent(null);
+            
+            Destroy(_newCliente );
+            Destroy(_newObjective);
+            SpawnClient();
+        }
     }
     
 }

@@ -25,34 +25,22 @@ public class Movement : MonoBehaviour
         if (playerHasControl)
         {
             if (Input.GetKey("w"))
-                cabinRigidbody.transform.eulerAngles = new Vector3(
-                    cabinRigidbody.transform.eulerAngles.x - rotDegrees,
-                    cabinRigidbody.transform.eulerAngles.y ,
-                    cabinRigidbody.transform.eulerAngles.z) ;
+                cabinRigidbody.transform.Rotate(-rotDegrees,0,0);
 
             if ( Input.GetKey("s"))
             {
-                cabinRigidbody.transform.eulerAngles = new Vector3(
-                    cabinRigidbody.transform.eulerAngles.x + rotDegrees,
-                    cabinRigidbody.transform.eulerAngles.y ,
-                    cabinRigidbody.transform.eulerAngles.z) ;
+                cabinRigidbody.transform.Rotate(rotDegrees,0,0);
             }
 
             if (Input.GetKey("d"))
             {
-                cabinRigidbody.transform.eulerAngles = new Vector3(
-                    cabinRigidbody.transform.eulerAngles.x ,
-                    cabinRigidbody.transform.eulerAngles.y + rotDegrees ,
-                    cabinRigidbody.transform.eulerAngles.z) ;     
+                cabinRigidbody.transform.Rotate(0, rotDegrees,0);  
 
             }
 
             if (Input.GetKey("a"))
             {
-                cabinRigidbody.transform.eulerAngles = new Vector3(
-                    cabinRigidbody.transform.eulerAngles.x ,
-                    cabinRigidbody.transform.eulerAngles.y - rotDegrees ,
-                    cabinRigidbody.transform.eulerAngles.z) ;
+                cabinRigidbody.transform.Rotate(0, -rotDegrees,0); 
             }
 
             if (Input.GetKey("space"))

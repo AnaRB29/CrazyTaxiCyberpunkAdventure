@@ -14,8 +14,12 @@ public class DetectCollision : MonoBehaviour
     static float t = 0.0f;
     private void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(Punish());
-        Debug.Log("Chocaste pendejo");
+        if (other.CompareTag("Building"))
+        {
+            StartCoroutine(Punish());
+            Debug.Log("Chocaste pendejo");
+        }
+       
     }
 
     private IEnumerator Punish()
@@ -35,8 +39,6 @@ public class DetectCollision : MonoBehaviour
             }
         }
        
-           
-        
         movement.cabinRigidbody.angularVelocity = Vector3.zero;
         if (timer >= punishTime)
         {
