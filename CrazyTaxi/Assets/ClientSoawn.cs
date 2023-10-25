@@ -26,22 +26,20 @@ public class ClientSoawn : MonoBehaviour
 
     private void Update()
     {
-        if (clienteObtenido)
+        if (!clienteObtenido && Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 1)
         {
-            if (Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 1)
+            if (Vector3.Distance(player.transform.position, _newCliente.transform.position) <= 1) 
             {
-                Debug.Log("FRENA");
-            
+                //Debug.Log("FRENA");
                 _newCliente.transform.parent = player.transform;
-                if (_newCliente.transform.parent == player.transform)
-                {
-                    SpawnObjective();
-                    clienteObtenido = false;
-                }
+                SpawnObjective();
+                clienteObtenido = true;
             } 
         }
-        LeaveClient();
-        
+        else
+        {
+            LeaveClient();
+        }
     }
 
 
@@ -49,23 +47,20 @@ public class ClientSoawn : MonoBehaviour
     {
         int indexC = Random.Range(0, positions.Count);
         _newCliente = Instantiate(cliente, positions[indexC], Quaternion.identity);
-        clienteObtenido = true;
+        clienteObtenido = false;
     }
 
     private void SpawnObjective()
     {
         int indexO = Random.Range(0, objectives.Count);
         _newObjective = Instantiate(objective, positions[indexO], Quaternion.identity);
-      
     }
 
     private void LeaveClient()
     {
         if ((Vector3.Distance(player.transform.position, _newObjective.transform.position) <= 5))
         {
-            Debug.Log("A");
-            _newCliente.transform.SetParent(null);
-            
+            //Debug.Log("A");
             Destroy(_newCliente );
             Destroy(_newObjective);
             SpawnClient();
